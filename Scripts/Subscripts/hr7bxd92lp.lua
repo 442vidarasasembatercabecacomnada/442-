@@ -236,11 +236,12 @@ local SaveManager = {} do
 
 		local section = tab
 
-		section:AddInput("SaveManager_ConfigName",    { Title = "Config name" })
-		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList(), AllowNull = true })
+		section:AddInput("SaveManager_ConfigName",    { Title = "Config name", Description = "Add a name to your config"})
+		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Description = "List all your configs", Values = self:RefreshConfigList(), AllowNull = true })
 
 		section:AddButton({
             Title = "Create config",
+			Description = "Create a configuration",
             Callback = function()
                 local name = SaveManager.Options.SaveManager_ConfigName.Value
 
@@ -275,7 +276,7 @@ local SaveManager = {} do
             end
         })
 
-        section:AddButton({Title = "Load config", Callback = function()
+        section:AddButton({Title = "Load config", Description = "Load the selected config", Callback = function()
 			local name = SaveManager.Options.SaveManager_ConfigList.Value
 
 			local success, err = self:Load(name)
@@ -296,7 +297,7 @@ local SaveManager = {} do
 			})
 		end})
 
-		section:AddButton({Title = "Overwrite config", Callback = function()
+		section:AddButton({Title = "Overwrite config", Description = "Update the current config", Callback = function()
 			local name = SaveManager.Options.SaveManager_ConfigList.Value
 
 			local success, err = self:Save(name)
@@ -317,7 +318,7 @@ local SaveManager = {} do
 			})
 		end})
 
-		section:AddButton({Title = "Refresh list", Callback = function()
+		section:AddButton({Title = "Refresh list", Description = "Update the list of configs", Callback = function()
 			SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
 			SaveManager.Options.SaveManager_ConfigList:SetValue(nil)
 		end})
@@ -337,6 +338,7 @@ local SaveManager = {} do
 
 		section:AddButton({
 			Title = "Remove Autoload",
+			Description = "Remove the current autoload",
 			Callback = function()
 				local success = SaveManager:RemoveAutoloadConfig()
 				if success then
