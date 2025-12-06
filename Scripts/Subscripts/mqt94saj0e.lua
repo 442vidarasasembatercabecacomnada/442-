@@ -3,7 +3,7 @@ local httpService = game:GetService("HttpService")
 local InterfaceManager = {} do
 	InterfaceManager.Folder = "moon"
     InterfaceManager.Settings = {
-        Theme = "Darker",
+        Theme = "supernova",
         Acrylic = false,
         Transparency = false,
         MenuKeybind = "M"
@@ -71,6 +71,7 @@ local InterfaceManager = {} do
 		if not UserInputService.TouchEnabled then
 			local MenuKeybind = section:AddKeybind("MenuKeybind", {
 				Title = "Minimize Bind",
+				Description = "Key to open and close the menu",
 				Default = Settings.MenuKeybind
 			})
 
