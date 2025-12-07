@@ -2019,7 +2019,7 @@ Components.TitleBar = (function()
 		local planTextColor = Color3.fromRGB(160, 160, 160)
 		local isPremium = false
 
-		if typeof(getgenv) == "function" and getgenv().__userplan == "Premium" then
+		if getgenv().__userplan == "Premium" then
 			userPlan = "Premium"
 			planTextColor = Color3.fromRGB(255, 255, 255)
 			isPremium = true
