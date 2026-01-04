@@ -127,7 +127,7 @@ return function(mainTab, lib)
         return tick() < soundBlockedUntil
     end
 
-    funcs.ConnectRunService("BypassGazo", "HeartBeat", function()
+    funcs.ConnectRunService("BypassGazo", "Heartbeat", function()
         if not states.bypassgazo then return end
         for sound in pairs(activeSounds) do
             if not sound.Parent or not sound.Playing then
@@ -461,7 +461,7 @@ return function(mainTab, lib)
             states.autoparry = boolean
             if boolean then
                 getRadiusIncreaseByPing()
-                funcs.ConnectRunService("autoparry", "HeartBeat", AutoParryLoop)
+                funcs.ConnectRunService("autoparry", "Heartbeat", AutoParryLoop)
             else
                 funcs.DisconnectRunService("autoparry")
                 DestroyVisualizer()
@@ -623,7 +623,7 @@ return function(mainTab, lib)
     function funcs.StartAIMovement()
         funcs.DisconnectRunService("BallFollowConnection")
 
-        funcs.ConnectRunService("BallFollowConnection", "HeartBeat", function()
+        funcs.ConnectRunService("BallFollowConnection", "Heartbeat", function()
             if not LocalPlayer:GetAttribute('IsInGame') then
                 return
             end
@@ -805,7 +805,7 @@ return function(mainTab, lib)
         Default = false,
         Callback = function(boolean)
             if boolean then
-                funcs.ConnectRunService("AutoReady", "HeartBeat", function()
+                funcs.ConnectRunService("AutoReady", "Heartbeat", function()
                     if LocalPlayer.Character and not game.Players.LocalPlayer:GetAttribute('IsInGame') then
                         jaexecutou = true
                         if LocalPlayer.Character.Humanoid and funcs.findReadyZone() then
